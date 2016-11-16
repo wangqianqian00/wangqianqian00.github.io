@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      js闭包的理解 | 墨菲定律 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="七月">
+    
+    
+
+    <meta name="description" content="1.有些文章认为闭包必须要返回嵌套函数中里面用到外面函数局部变量的方法才叫闭包,有两个条件:1)、函数嵌套，内部函数要用到外部函数的局部变量 2）、内部函数必须返回
+2.有些文章认为只要函数嵌套内部函数用到了外部局部变量就是闭包，不要返回内部函数 
+我们先看看闭包的定义到底是什么,然后在来分析我在学习js的时候不同阶段对闭包的误解。在高级程序设计中对闭包定义是这样的：“闭包是指有权限访问另一个函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js闭包的理解 | 墨菲定律">
+<meta property="og:url" content="http://yoursite.com/2016/07/06/bibao/index.html">
+<meta property="og:site_name" content="墨菲定律">
+<meta property="og:description" content="1.有些文章认为闭包必须要返回嵌套函数中里面用到外面函数局部变量的方法才叫闭包,有两个条件:1)、函数嵌套，内部函数要用到外部函数的局部变量 2）、内部函数必须返回
+2.有些文章认为只要函数嵌套内部函数用到了外部局部变量就是闭包，不要返回内部函数 
+我们先看看闭包的定义到底是什么,然后在来分析我在学习js的时候不同阶段对闭包的误解。在高级程序设计中对闭包定义是这样的：“闭包是指有权限访问另一个函数">
+<meta property="og:updated_time" content="2016-11-16T08:57:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js闭包的理解 | 墨菲定律">
+<meta name="twitter:description" content="1.有些文章认为闭包必须要返回嵌套函数中里面用到外面函数局部变量的方法才叫闭包,有两个条件:1)、函数嵌套，内部函数要用到外部函数的局部变量 2）、内部函数必须返回
+2.有些文章认为只要函数嵌套内部函数用到了外部局部变量就是闭包，不要返回内部函数 
+我们先看看闭包的定义到底是什么,然后在来分析我在学习js的时候不同阶段对闭包的误解。在高级程序设计中对闭包定义是这样的：“闭包是指有权限访问另一个函数">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">墨菲定律</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          提莫队长正在待命
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">js闭包的理解</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2016-07-06" class="post-meta__date date">2016-07-06</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>1.有些文章认为闭包必须要返回嵌套函数中里面用到外面函数局部变量的方法才叫闭包,有两个条件:1)、函数嵌套，内部函数要用到外部函数的局部变量 2）、内部函数必须返回</p>
+<p>2.有些文章认为只要函数嵌套内部函数用到了外部局部变量就是闭包，不要返回内部函数 </p>
+<p>我们先看看闭包的定义到底是什么,然后在来分析我在学习js的时候不同阶段对闭包的误解。在高级程序设计中对闭包定义是这样的：“闭包是指有权限访问另一个函数作用域中的变量的函数。“这里没有提到这个函数必须要return出来，我们在看看语言精粹中对闭包的定义是用一段很误导人的代码例子来解释闭包：</p>
+<pre><code>    var quo=function(status){
+      return{
+            get_status:function(){
+              return status;
+           }
+      }
+    }
+
+var myQuo=quo(&quot;amazed&quot;);
+document.writeln(myQuo.get_status());
+</code></pre><p>“即使quo返回了,但get_status方法仍然享有访问quo对象的status属性的特权,get_status方法并不是访问该参数的一个副本,它访问的是该参数本身,只是可能的,因为该函数可以访问它被创建时所处的上下文环境,这被称为闭包. “</p>
+<p>   这是很多解释闭包的文章最常用的解释案例,所以导致新手第一次看这种解释产生一个误导,说必须要return这个函数,但我们看看《javascript语言精粹》这段解释中最后强调的是该函数可以访问被创建时所处的上下文环境，强调的是访问外部函数的局部变量，</p>
+<p>而用这个例子是因为这个例子是闭包的更为复杂的应用，因为你在函数嵌套中，内部函数的运行只能在外部函数中执行，要在全局变量中运行不了，如果我们要在全局运行一个比较容易理解的方法是：</p>
+<pre><code> var get_status;
+        var quo=function(status){
+            get_status=function(){
+                return status;
+            }
+        }
+
+quo(&quot;amazed&quot;);
+
+document.writeln( get_status());
+</code></pre><p>那这种是不是闭包呢？对上面代码进行优化利用js 可以return函数代码简化了很多。所以在我的理解只要调用了外部函数变量的函数都是闭包，而之所以对闭包的介绍都用那个案例是因为那个算是闭包的经典复杂的应用所以基本介绍闭包的都会介绍那个案例，这样反而误导了刚学习闭包的同学必须要return出去，下面我在说说我理解闭包踩过的坑。</p>
+<p>刚开始我对闭包理解就是匿名自执行函数，匿名自执行函数如下代码：</p>
+<pre><code>(function(){})()
+//or
+var dem=(function(){}())
+</code></pre><p>这个匿名自执行用到最多的当然是jQuery里面：</p>
+<pre><code>(function ($) {
+
+       })(jQuery)
+</code></pre><p>在jQuery插件中经常会看到这种写法,这样写的目的是为了$变量有可能会在网页中被定义成其他值,而为了避免$符号的冲突而将jQuery这个对象赋值成局部$变量。这样就不会影响全局$。</p>
+<p>还有一种用法是：</p>
+<pre><code>var a = [];
+   for (var i = 0; i &lt; 10; i++) {
+       a[i] = function () {
+           console.log(i);
+       };
+   }
+   a[6]();
+</code></pre><p>因为js没有块作用域所以导致i其实是全局变量，所以a中的所以方法里面的i都是10，解决这个问题可以用es6 中let，但目前有些浏览器不支持es6,谷歌已经支持let关键字了，现在做法是用es6的写法通过node插件转换成es5的写法，还用一种解决方法是：</p>
+<pre><code>var a = [];
+  for (var i = 0; i &lt; 10; i++) {
+      (function(i){
+          a[i] = function () {
+              console.log(i);
+          };
+      })(i)
+  }
+  a[6]();      
+</code></pre><p>闭包在实际项目中应用说白了就是一个函数中要频繁操作一些变量，但这个变量在函数中定义在函数每次运行的时候都要重新声明分配内存空间一来麻烦二来感觉消耗内存（用过C#和java的都应该很熟悉垃圾处理机制，js的垃圾处理机制类似不多详细介绍了）但设置成全局变量又会污染全局变量，在js性能优化中提到尽量不要污染全局变量，自然外面套成函数的方式就出来了也就是闭包咯，但又要保证内部函数的运行灵活性不能限制在外层闭包的作用域，return这个函数的方式就出来了，外层函数不想用变量存储而且还要单独运行一次，那么匿名自执行的的方式出来了，ok需求演变导致最后的组合书写方式。在这里在讲讲闭包的缺点，闭包一个缺点是让调用的变量会一直存储在内存得不到释放，这个缺点在实际项目需求中有不同的解决方法：</p>
+<pre><code>var serial_maker=function () {
+       var prefix=&apos;&apos;;
+       var seq=0;
+       return{
+           set_prefix:function (p) {
+               prefix=new String(p)
+           },
+           set_seq:function (s) {
+               seq=s;
+           },
+           gensym:function () {
+               var result=prefix+seq;
+               seq+=1;
+               return result;
+           }
+       }
+   }
+   var seqer=serial_maker();
+   seqer,set_prefix(&apos;Q&apos;);
+   seqer.set_seq(1000);
+   var unique=seqer.gensym(); //unique是&quot;Q1000&quot;
+</code></pre><p>这是也很常见的闭包，用意就是不想把prefix和seq声明为全局变量，而污染全局变量，在变量生命周期的角度其实和全局变量是一样的，prefix和seq会一直存在内存中直到页面关闭，javascript高级程序设计中说变量会在函数执行完毕后就进行释放，而全局变量会一直在内存中直到浏览器关闭，书还提到在浏览器关闭的时候要将用到的dom对象的变量赋值null，因为浏览器貌似不能释放dom对象，这点我有点模糊记不太清楚了，我复习javascript高级程序设计的时候看到了在单独写一遍随便。解决闭包的这个缺点只需在外面加一层匿名自执行函数就可以了</p>
+<pre><code>(function () {
+      var serial_maker=function () {
+          var prefix=&apos;&apos;;
+          var seq=0;
+          return{
+              set_prefix:function (p) {
+                  prefix=new String(p)
+              },
+              set_seq:function (s) {
+                  seq=s;
+              },
+              gensym:function () {
+                  var result=prefix+seq;
+                  seq+=1;
+                  return result;
+              }
+          }
+      }
+  })();
+</code></pre><p>闭包中用到的变量的生声明周期其实是跟着调用这个函数的上一函数的生命周期的，这个例子的中的prefix和seq是在匿名函数执行后就被释放了。这也是在平时写js时候尽量在外面套一层匿名自执行一来不会污染全局变量，二来在匿名函数执行完了里面的的变量就释放掉了，相对在性能优化上做了一点点贡献和优化吧！</p>
+<p>第二场景：同样在事件绑定上也可以用匿名闭包，性能确定就存在了，你在设置全局变量和闭包其实一个内存占用量。不可避免的。</p>
+<p>第三场景：柯里化</p>
+<p>柯里化就是将函数的参数传递给另一个函数操作,一般用到柯里化是在调用ajax成功之后将数据绑到到页面上时候用到,但随着promise的出现,其实柯里化用的很少了。下面是一个更为复杂的应用:</p>
+<pre><code>Function.prototype.curry=function () {
+     var slice=Array.prototype.slice,
+             args=slice.apply(arguments),//因为arguments不是真正的数组,只是类似数组的一个对象,所以这里要将arguments转换为数组
+             that=this;
+     debugger;
+     return function () {
+         return that.apply(null,args.concat(slice.apply(arguments)))
+     }
+ };
+ var add=function () {
+     var total=0;
+    for(var i=0;i&lt;arguments.length;i++){
+        total+=arguments[i];
+    }
+    return total;
+ };
+   var add1=add.curry(1);
+   document.writeln(add1(6));//7
+</code></pre>
+  </section>
+
+  
+  
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
