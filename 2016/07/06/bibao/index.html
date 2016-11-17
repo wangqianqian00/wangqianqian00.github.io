@@ -179,7 +179,8 @@ classes that you can use:
     
 
   </header>
-   <section id="post-content" class="article-content post">
+
+  <section id="post-content" class="article-content post">
     <p>1.有些文章认为闭包必须要返回嵌套函数中里面用到外面函数局部变量的方法才叫闭包,有两个条件:1)、函数嵌套，内部函数要用到外部函数的局部变量 2）、内部函数必须返回</p>
 <p>2.有些文章认为只要函数嵌套内部函数用到了外部局部变量就是闭包，不要返回内部函数 </p>
 <p>我们先看看闭包的定义到底是什么,然后在来分析我在学习js的时候不同阶段对闭包的误解。在高级程序设计中对闭包定义是这样的：“闭包是指有权限访问另一个函数作用域中的变量的函数。“这里没有提到这个函数必须要return出来，我们在看看语言精粹中对闭包的定义是用一段很误导人的代码例子来解释闭包：</p>
@@ -324,8 +325,6 @@ var dem=(function(){}())
 
 
 </article>
-
-
 
             <footer class="footer">
 
