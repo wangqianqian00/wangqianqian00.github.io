@@ -26,7 +26,7 @@ HTML5强调简化标签，例如文档类型声明，在HTML5中，仅用&amp;lt
 <meta property="og:description" content="一、概述响应式设计，用一句话概括就是针对任意设备对网页内容进行完美布局的一种显示机制。利用HTML5和CSS3就更加如虎添翼。
 HTML5强调简化标签，例如文档类型声明，在HTML5中，仅用&amp;lt;!DOCTYPE html&amp;gt;即可，链接外部脚本、样式文件，也更加宽松，无需type属性，如下：
 &amp;lt;script src=&amp;apos;Monkey.js&amp;apos;&amp;gt;&amp;lt;/scrip">
-<meta property="og:updated_time" content="2016-11-17T03:55:11.000Z">
+<meta property="og:updated_time" content="2016-11-17T07:33:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="响应式 | 墨菲定律">
 <meta name="twitter:description" content="一、概述响应式设计，用一句话概括就是针对任意设备对网页内容进行完美布局的一种显示机制。利用HTML5和CSS3就更加如虎添翼。
@@ -179,8 +179,153 @@ classes that you can use:
     
 
   </header>
+   <section id="post-content" class="article-content post">
+    <h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><p>响应式设计，用一句话概括就是针对任意设备对网页内容进行完美布局的一种显示机制。利用HTML5和CSS3就更加如虎添翼。</p>
+<p>HTML5强调简化标签，例如文档类型声明，在HTML5中，仅用&lt;!DOCTYPE html&gt;即可，链接外部脚本、样式文件，也更加宽松，无需type属性，如下：</p>
+<pre><code>&lt;script src=&apos;Monkey.js&apos;&gt;&lt;/script&gt;
+</code></pre><p>代替–&gt;</p>
+<pre><code>&lt;script src=&apos;Monkey.js&apos; type=&apos;text/javascript&apos;&gt;&lt;/script&gt;
+</code></pre><p>同时，HTML5新增了语义化标签元素，易读和利于SEO，如下：</p>
+<p><code>&lt;section&gt;</code>元素用来定义文档或应用程序中的区域。</p>
+<p><code>&lt;nav&gt;</code>元素用来定义文档的主导航区域</p>
+<p><code>&lt;article&gt;</code>元素用来包裹独立的内容片段。</p>
+<p><code>&lt;aside&gt;</code>元素用来表示与页面主内容松散相关内容。</p>
+<p><code>&lt;header&gt;</code>、<code>&lt;footer&gt;</code>、<code>&lt;address&gt;</code>、<code>&lt;hgroup&gt;</code></p>
+<p>而CSS3，根据其新特性，则可代替JavaScript，实现一些动画效果，轻量级且易于维护。</p>
+<p>响应式设计结合了CSS3媒体查询、流式布局和弹性图片技术，下面就一起来看看。</p>
+<h2 id="二、CSS3媒体查询"><a href="#二、CSS3媒体查询" class="headerlink" title="二、CSS3媒体查询"></a>二、CSS3媒体查询</h2><p>CSS3媒体查询，就是由媒体类型（screen和print）和一个或多个检测媒体特性的条件表达式组成，可以在不改变页面内容的情况下，为特定的一些输出设备定制显示效果。</p>
+<p>媒体查询中常用媒体特性，如下：</p>
+<p>–width：视口宽度；</p>
+<p>–height：视口高度；</p>
+<p>–device-width：设备屏幕宽度；</p>
+<p>–device-height：设备屏幕高度；</p>
+<p>–orientation：检查设备处于横向还是纵向；</p>
+<p>–aspect-ratio：基于视口宽度和高度比；</p>
+<p>以上特性，都可使用min和max前缀来创建一个查询范围。</p>
+<p>举例，当屏幕中视口宽度小于960像素时，如下CSS代码生效：</p>
+<pre><code>/*CSS样式表中使用媒体查询*/
+@media screen and (max-width: 960px){
+    body{
+        background-color:grey;
+        …
+    }
+}
+/*CSS外部链接中使用媒体查询*/
+&lt;link rel=”stylesheet” media=”screen and (max-width:960px)”     href=”monkey.css”/&gt;
+</code></pre><p>PS：为了阻止移动浏览器自动调整页面大小，我们还得使用meta，定义如下：</p>
+<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-    scale=1.0&quot;/&gt;
+</code></pre><p>content里的内容就是告诉浏览器页面的宽度应该等于设备宽度。</p>
+<h2 id="三、流式布局"><a href="#三、流式布局" class="headerlink" title="三、流式布局"></a>三、流式布局</h2><p>媒体查询，威力无穷，但是它的局限性也很明显，在媒体查询设置的不同断点，CSS样式只会从一组突变到另一组，样式之间没有任何平滑渐变。</p>
+<p>因此，我们引入“流式布局”来弥补媒体查询的短板。</p>
+<p>流式布局，又叫百分比布局，顾名思义就是使用百分比来代替固定像素的宽度，两者之间怎么转化呢？</p>
+<p>公式如下：</p>
+<pre><code>目标元素宽度 / 上下文元素宽度 = 百分比宽度
+</code></pre><p>例如，现有html代码如下：</p>
+<pre><code> &lt;body&gt;
+    &lt;div id=&quot;wrapper&quot;&gt;
+        &lt;header&gt;
+            &lt;nav&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;navigation1&lt;/li&gt;
+                    &lt;li&gt;navigation2&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/nav&gt;
+        &lt;/header&gt; 
+    &lt;/div&gt;        
+&lt;/body&gt;
+</code></pre><p>固定像素样式如下</p>
+<pre><code>* {
+      margin: 0;
+    padding: 0;
+}
+#wrapper {
+    margin: 0 auto;
+    width: 960px;
+    background: grey;
+}
+header {
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 940px;
+}
+nav {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 940px;
+}
+nav ul li {
+    display: inline-block;
+    list-style-type: none;
+}
+</code></pre><p>现在，我们将样式中的宽度、水平方向的内外边距，利用上面公式转换成百分比，如下：</p>
+<p>PS：假设我们以1000像素的视口为基准。</p>
+<pre><code>/*目标元素宽度 / 上下文元素宽度 = 百分比宽度*/
+* {
+    margin: 0;
+    padding: 0;
+}
+#wrapper {
+    margin: 0 auto;
+    width: 96%;/* 960 / 1000 = 96% */
+    background: grey;
+}
+header {
+    margin-right: 1.041667%;/* 10 / 960 = 1.041667% */
+    margin-left: 1.041667%;/* 10 / 960 = 1.041667% */
+    width: 97.916667%;/* 940 / 960 = 97.916667% */
+}
+nav {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;/* 940 / 940 = 100% */
+}
+nav ul li {
+    display: inline-block;
+    list-style-type: none;
+}
+</code></pre><p>在上述CSS样式中，我们换算百分比，之所以保留如此多位数，是为了更加精确。</p>
+<p>此外，我们还可以将像素级文字，转换成相对单位—em。上述转换公式同样适用于将文字的像素单位转换为相对单位。</p>
+<p>不过，值得注意的是，现代浏览器的默认文字大小都是16像素（显示声明除外），因此一开始给body标签应用如下任何一条规则所产生的效果都是一样的：</p>
+<pre><code>font-size: 100%;
 
-  <!-- 多说评论框 start -->
+font-size: 16px;
+
+font-size: 1em;
+</code></pre><h2 id="四、弹性图片"><a href="#四、弹性图片" class="headerlink" title="四、弹性图片"></a>四、弹性图片</h2><p>在现代浏览器中要实现图片随着流动布局相应缩放非常简单，只需在CSS中作如下声明，即可：</p>
+<pre><code>img {
+    max-width: 100%;
+}
+</code></pre><p>这样就可以使图片自动缩放到与其容器100%匹配。更进一步，可以将同样的样式应用到其他多媒体标签上，使其也可以自动缩放，如下：</p>
+<pre><code>img, object, video, embed {
+    max-width: 100%;
+}
+</code></pre>
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2016/10/08/xiangyingshi/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"wangqianqian11"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+<!-- 多说评论框 start -->
   <div class="ds-thread" data-thread-key="post-xiangyingshi" data-title="响应式" data-url="http://yoursite.com/2016/10/08/xiangyingshi/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
@@ -196,8 +341,6 @@ var duoshuoQuery = {short_name:"wangqianqian11"};
   })();
   </script>
 <!-- 多说公共JS代码 end -->
-
-</article>
 
 
             <footer class="footer">
