@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>CSS3与页面布局学习总结（一）——概要、选择器、特殊性与刻度单位 | 墨菲定律</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="目录一、CSS3概要
+
+1.1、特点
+
+
+1.2、效果演示
+
+
+1.3、帮助文档与学习
+
+二、选择器
+
+1.1、基础的选择器
+
+1.2、组合选择器
+
+1.3、属性选择器
+
+1.4、伪类
+
+1.5、伪元素
+
+
+三、特殊性（优先级）
+
+3.2、计算特殊性值
+
+四、刻度
+
+4.1、绝对长度单位
+
+4.2、文本相对长度单位
+
+4.3、Web App与Rem
+
+
+####web前端开发者最最注的内容是三个：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS3与页面布局学习总结（一）——概要、选择器、特殊性与刻度单位">
+<meta property="og:url" content="http://yoursite.com/2016/07/02/bk1/index.html">
+<meta property="og:site_name" content="墨菲定律">
+<meta property="og:description" content="目录一、CSS3概要
+
+1.1、特点
+
+
+1.2、效果演示
+
+
+1.3、帮助文档与学习
+
+二、选择器
+
+1.1、基础的选择器
+
+1.2、组合选择器
+
+1.3、属性选择器
+
+1.4、伪类
+
+1.5、伪元素
+
+
+三、特殊性（优先级）
+
+3.2、计算特殊性值
+
+四、刻度
+
+4.1、绝对长度单位
+
+4.2、文本相对长度单位
+
+4.3、Web App与Rem
+
+
+####web前端开发者最最注的内容是三个：">
+<meta property="og:image" content="http://b375.photo.store.qq.com/psb?/V12Zwqs81gGyHH/a*febDUmpUIwxSUnvQEGIOhebOrc84lZ3mejc7CVnNA!/b/dHcBAAAAAAAA&bo=BwJ8AQAAAAADAF0!&rf=viewer_4">
+<meta property="og:image" content="http://a3.qpic.cn/psb?/V12Zwqs81gGyHH/2eYyoBw08PUywwsMX5IMiU1nm4xLCW4PY8UhOTfiW.Q!/b/dHwBAAAAAAAA&bo=9gHvAQAAAAACJxo!&rf=viewer_4">
+<meta property="og:image" content="http://a2.qpic.cn/psb?/V12Zwqs81gGyHH/a7j8NENcGeixZR7s7A2mlGaJ5AuZyU6SuIxwiWf9ny4!/b/dAkBAAAAAAAA&bo=eQOAAgAAAAADAN0!&rf=viewer_4">
+<meta property="og:image" content="http://a1.qpic.cn/psb?/V12Zwqs81gGyHH/2TkGFB*1xUUOPnMjQSfYcDAB6GfRVGQHnZUwHA4dF4M!/b/dHcBAAAAAAAA&bo=cQOAAgAAAAADANU!&rf=viewer_4">
+<meta property="og:image" content="http://a3.qpic.cn/psb?/V12Zwqs81gGyHH/2oopgU1wuFAhtV50bftLOsNbOmBl2DDrRYXmMiYECHU!/b/dHABAAAAAAAA&bo=fQOAAgAAAAADANk!&rf=viewer_4">
+<meta property="og:image" content="http://a3.qpic.cn/psb?/V12Zwqs81gGyHH/RqS*oicY5cZRqLkvrqOBCTTZ1PTHZKyClgXBq4x6TlE!/b/dHABAAAAAAAA&bo=iAPgAQAAAAADAE8!&rf=viewer_4">
+<meta property="og:image" content="http://a3.qpic.cn/psb?/V12Zwqs81gGyHH/Z.dEeR5VoIp3ny2IFtDMs6US3bhLCqzNHrzNC5CFwMM!/b/dHwBAAAAAAAA&bo=.QElAQAAAAADAPk!&rf=viewer_4">
+<meta property="og:image" content="http://a2.qpic.cn/psb?/V12Zwqs81gGyHH/PAUbLg5gP5ZCM8roO2ccuA2rBHszatB7DxAULzjk4DI!/b/dAkBAAAAAAAA&bo=eQOuAQAAAAADAPA!&rf=viewer_4">
+<meta property="og:image" content="http://a1.qpic.cn/psb?/V12Zwqs81gGyHH/lWe16W6Huk1z9A5NHsG0zkxlohOUkkaaU.KRdRW8Asc!/b/dHcBAAAAAAAA&bo=PABDAAAAAAADB10!&rf=viewer_4">
+<meta property="og:image" content="http://a1.qpic.cn/psb?/V12Zwqs81gGyHH/8U7tw5I9Je0nx0JVcCAo7W0CWoGoTJNNxl943r7I4F0!/b/dHcBAAAAAAAA&bo=bgBFAAAAAAADBwk!&rf=viewer_4">
+<meta property="og:image" content="http://a1.qpic.cn/psb?/V12Zwqs81gGyHH/vqgOktjzD42o01GfCeiAGbgr5C6hLsvr4laMQK00JeQ!/b/dHcBAAAAAAAA&bo=cwP7AQAAAAADAK8!&rf=viewer_4">
+<meta property="og:image" content="http://a1.qpic.cn/psb?/V12Zwqs81gGyHH/FvwPDOiYoYTWPtGnRFIrmyB.slI2oM0b5T.MhDL4.8c!/b/dHcBAAAAAAAA&bo=oABfAAAAAAADANo!&rf=viewer_4">
+<meta property="og:image" content="http://a2.qpic.cn/psb?/V12Zwqs81gGyHH/fVkIzx29UvREaixd4YZtkXJd0L*MiUh6*sgTHXnbyro!/b/dAkBAAAAAAAA&bo=hwMBAgAAAAADAKI!&rf=viewer_4">
+<meta property="og:image" content="http://a2.qpic.cn/psb?/V12Zwqs81gGyHH/UCCkXxOTZ8NxEb1vdu4NGmauoUhZOaIw5wBkTeYohyU!/b/dAkBAAAAAAAA&bo=zgJyAQAAAAADAJo!&rf=viewer_4">
+<meta property="og:image" content="http://a3.qpic.cn/psb?/V12Zwqs81gGyHH/cgKWfwvDSiaaiTJFMRpRayTDVz2EGVV2LCZQqjWWtIg!/b/dHwBAAAAAAAA&bo=eQORAQAAAAADAM8!&rf=viewer_4">
+<meta property="og:image" content="http://a2.qpic.cn/psb?/V12Zwqs81gGyHH/i05*pAaMKW*nrAHdr08MmW06FUgzMbloCKsxnegH81Y!/b/dI0BAAAAAAAA&bo=ZAPoAQAAAAADAKs!&rf=viewer_4">
+<meta property="og:image" content="http://a2.qpic.cn/psb?/V12Zwqs81gGyHH/2f6NEliKqB1U9ypoZrGyqMGNhcgFfYguaU5DWKp7g48!/b/dOUAAAAAAAAA&bo=rABeAAAAAAADANc!&rf=viewer_4">
+<meta property="og:image" content="http://a3.qpic.cn/psb?/V12Zwqs81gGyHH/fbX3ZzAaMN.ykNIil4WgGrb7qeV9MaePeG5g7EseWLI!/b/dAoBAAAAAAAA&bo=QgBLAAAAAAADACw!&rf=viewer_4">
+<meta property="og:image" content="http://a1.qpic.cn/psb?/V12Zwqs81gGyHH/4Tzpe1Ia5*Ax3WC*I2aEbY1sVWN7PEJfdgk2nsNTpLs!/b/dHcBAAAAAAAA&bo=bwKJAQAAAAADAMA!&rf=viewer_4">
+<meta property="og:image" content="http://a2.qpic.cn/psb?/V12Zwqs81gGyHH/El0zhz8lJhWS83FjD2asAygnWszF4pvHUOTZEisETtw!/b/dAkBAAAAAAAA&bo=bQICAQAAAAADAEk!&rf=viewer_4">
+<meta property="og:image" content="http://a3.qpic.cn/psb?/V12Zwqs81gGyHH/I6tAhcKTVzhDPlf4AK4nvK1ryTdcXSD.QiCpgNUD70U!/b/dAoBAAAAAAAA&bo=VgIPAQAAAAADAH8!&rf=viewer_4">
+<meta property="og:image" content="http://a1.qpic.cn/psb?/V12Zwqs81gGyHH/5TToaD3YaJT8NRRhz77YQYo7TSCIGNlBxcZGeI7pQ7E!/b/dOEAAAAAAAAA&bo=8QG2AAAAAAADAGM!&rf=viewer_4">
+<meta property="og:image" content="http://a3.qpic.cn/psb?/V12Zwqs81gGyHH/1ya.ctpXzuAmJwH192b7YTy9b7Vn0PFnoH2nnlFFwW4!/b/dAoBAAAAAAAA&bo=*AOKAAAAAAADAFA!&rf=viewer_4">
+<meta property="og:image" content="http://a3.qpic.cn/psb?/V12Zwqs81gGyHH/NmiAOXzoIL*yFcJoodUj8hr2c5gpB*7Ht0UmVOQGGnI!/b/dAoBAAAAAAAA&bo=nQMyAgAAAAADAIs!&rf=viewer_4">
+<meta property="og:image" content="http://a2.qpic.cn/psb?/V12Zwqs81gGyHH/nLAFuh1pX4xki8nLQmB71z1egg0.smC61wQTRCD0zVQ!/b/dAkBAAAAAAAA&bo=oQMxAgAAAAADALQ!&rf=viewer_4">
+<meta property="og:image" content="http://a3.qpic.cn/psb?/V12Zwqs81gGyHH/Hv0OykwYEpFIuPDsSTDGyyD96JW4Wb5it.WW17Bu.To!/b/dHwBAAAAAAAA&bo=awPrAQAAAAADAKc!&rf=viewer_4">
+<meta property="og:image" content="http://a2.qpic.cn/psb?/V12Zwqs81gGyHH/eeS5ePZlPLKYKPD85C9Mmo6HQLgONZCVaPoKToUVKWE!/b/dI0BAAAAAAAA&bo=DgGoAQAAAAADAIM!&rf=viewer_4">
+<meta property="og:image" content="http://a1.qpic.cn/psb?/V12Zwqs81gGyHH/qWiyvNgTNBhyjtTOxrOz5M93VAVdOQyxKUL51RtRJ*8!/b/dHcBAAAAAAAA&bo=jAEqAgAAAAADAIA!&rf=viewer_4">
+<meta property="og:image" content="http://a2.qpic.cn/psb?/V12Zwqs81gGyHH/liox8ofGx0gQkwGAMEcN9Nq.3DlqOqAgF6MvLhxKc7A!/b/dAkBAAAAAAAA&bo=IwHWAQAAAAADANA!&rf=viewer_4">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/63651/201611/63651-20161124104126003-1851324104.png">
+<meta property="og:updated_time" content="2016-11-26T07:15:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS3与页面布局学习总结（一）——概要、选择器、特殊性与刻度单位">
+<meta name="twitter:description" content="目录一、CSS3概要
+
+1.1、特点
+
+
+1.2、效果演示
+
+
+1.3、帮助文档与学习
+
+二、选择器
+
+1.1、基础的选择器
+
+1.2、组合选择器
+
+1.3、属性选择器
+
+1.4、伪类
+
+1.5、伪元素
+
+
+三、特殊性（优先级）
+
+3.2、计算特殊性值
+
+四、刻度
+
+4.1、绝对长度单位
+
+4.2、文本相对长度单位
+
+4.3、Web App与Rem
+
+
+####web前端开发者最最注的内容是三个：">
+<meta name="twitter:image" content="http://b375.photo.store.qq.com/psb?/V12Zwqs81gGyHH/a*febDUmpUIwxSUnvQEGIOhebOrc84lZ3mejc7CVnNA!/b/dHcBAAAAAAAA&bo=BwJ8AQAAAAADAF0!&rf=viewer_4">
+  
+    <link rel="alternative" href="/atom.xml" title="墨菲定律" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="https://avatars0.githubusercontent.com/u/20942996?v=3&amp;u=b3994d461fbfae56b624acf51a2fde58e0867f32&amp;s=400" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">七月</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">提莫队长正在待命</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/wangqianqian00" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+		        
+					<a class="rss" target="_blank" href="#" title="rss">rss</a>
+		        
+					<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">七月</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="https://avatars0.githubusercontent.com/u/20942996?v=3&amp;u=b3994d461fbfae56b624acf51a2fde58e0867f32&amp;s=400" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">七月</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">提莫队长正在待命</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/wangqianqian00" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-bk1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS3与页面布局学习总结（一）——概要、选择器、特殊性与刻度单位
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p>一、CSS3概要</p>
+<ul>
+<li>1.1、特点</li>
+</ul>
+<ol>
+<li>1.2、效果演示</li>
+</ol>
+<ul>
+<li>1.3、帮助文档与学习</li>
+</ul>
+<p>二、选择器</p>
+<ul>
+<li><p>1.1、基础的选择器</p>
+</li>
+<li><p>1.2、组合选择器</p>
+</li>
+<li><p>1.3、属性选择器</p>
+</li>
+<li><p>1.4、伪类</p>
+</li>
+<li><p>1.5、伪元素</p>
+</li>
+</ul>
+<p>三、特殊性（优先级）</p>
+<ul>
+<li>3.2、计算特殊性值</li>
+</ul>
+<p>四、刻度</p>
+<ul>
+<li><p>4.1、绝对长度单位</p>
+</li>
+<li><p>4.2、文本相对长度单位</p>
+</li>
+<li><p>4.3、Web App与Rem</p>
+</li>
+</ul>
+<p>####web前端开发者最最注的内容是三个：HTML、CSS与JavaScript，他们分别在不同方面发挥自己的作用，HTML实现页面结构，CSS完成页面的表现与风格，JavaScript实现一些客户端的功能与业务。当然内容与用户资源也是不能忽视的。尽量不要跨职责范围使用，有点“SRP单一职责”的意思，如字体大小应该是CSS控制的，就不应该使用HTML标签完成，如果CSS能解决的问题尽量不要用JavaScript完成。</p>
+<p><img src="http://b375.photo.store.qq.com/psb?/V12Zwqs81gGyHH/a*febDUmpUIwxSUnvQEGIOhebOrc84lZ3mejc7CVnNA!/b/dHcBAAAAAAAA&amp;bo=BwJ8AQAAAAADAF0!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<h2 id="一、CSS3概要"><a href="#一、CSS3概要" class="headerlink" title="一、CSS3概要"></a>一、CSS3概要</h2><p>CSS（Cascading Style Sheet）是层叠样式表的意思，CSS3就是在CSS2.1的基础上升级的CSS新版本，属于HTML5的一部分。它可以有效地对页面的布局、字体、颜色、背景、动画和其它效果实现。CSS3是CSS技术的升级版本，CSS3语言开发是朝着模块化发展的。以前的规范作为一个模块实在是太庞大而且比较复杂，所以，把它分解为一些小的模块，更多新的模块也被加入进来。这些模块包括： 盒子模型、列表模块、超链接方式 、语言模块 、背景和边框 、文字特效 、多栏布局等。</p>
+<p>1.1、特点</p>
+<p>1.2、效果演示</p>
+<h5 id="纯CSS3画出小黄人并实现动画效果"><a href="#纯CSS3画出小黄人并实现动画效果" class="headerlink" title="纯CSS3画出小黄人并实现动画效果"></a>纯CSS3画出小黄人并实现动画效果</h5><p><img src="http://a3.qpic.cn/psb?/V12Zwqs81gGyHH/2eYyoBw08PUywwsMX5IMiU1nm4xLCW4PY8UhOTfiW.Q!/b/dHwBAAAAAAAA&amp;bo=9gHvAQAAAAACJxo!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<h2 id="1-3、帮助文档与学习"><a href="#1-3、帮助文档与学习" class="headerlink" title="1.3、帮助文档与学习"></a>1.3、帮助文档与学习</h2><h4 id="权威的帮助文档是最好的学习资料，CSS2的帮助，非常详细："><a href="#权威的帮助文档是最好的学习资料，CSS2的帮助，非常详细：" class="headerlink" title="权威的帮助文档是最好的学习资料，CSS2的帮助，非常详细："></a>权威的帮助文档是最好的学习资料，CSS2的帮助，非常详细：</h4><p><img src="http://a2.qpic.cn/psb?/V12Zwqs81gGyHH/a7j8NENcGeixZR7s7A2mlGaJ5AuZyU6SuIxwiWf9ny4!/b/dAkBAAAAAAAA&amp;bo=eQOAAgAAAAADAN0!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<p><img src="http://a1.qpic.cn/psb?/V12Zwqs81gGyHH/2TkGFB*1xUUOPnMjQSfYcDAB6GfRVGQHnZUwHA4dF4M!/b/dHcBAAAAAAAA&amp;bo=cQOAAgAAAAADANU!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<p><img src="http://a3.qpic.cn/psb?/V12Zwqs81gGyHH/2oopgU1wuFAhtV50bftLOsNbOmBl2DDrRYXmMiYECHU!/b/dHABAAAAAAAA&amp;bo=fQOAAgAAAAADANk!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<p> 帮助文档:<a href="http://www.css88.com/book/css/properties/text/index.htm" target="_blank" rel="external">http://www.css88.com/book/css/properties/text/index.htm</a></p>
+<h2 id="二、选择器"><a href="#二、选择器" class="headerlink" title="二、选择器"></a>二、选择器</h2><p>在使用CSS时我们首先要做的事情是找到元素，在写相应的样式，在CSS2.1中最常使用的是三种选择器：</p>
+<p>a)、ID选择器：以#开始，引用时使用id，如id=”div1”</p>
+<p> #div1</p>
+<p>{</p>
+<p>   color:red;</p>
+<p>}</p>
+<p>b)、类选择器：以.开始，使用class属性引用，可以有多个，如class=”cls1 cls2 cls3”</p>
+<p>.cls1</p>
+<p>{</p>
+<p>   background-color:#99ccff;</p>
+<p>}</p>
+<p>c)、标签选择器：以标签名称开始，如p,span,div,*</p>
+<p>div span</p>
+<p>{</p>
+<p>   font-size:14px;</p>
+<p>}</p>
+<p>当然还有如伪类选择，a:hover，a:link，a:visted，a:active。</p>
+<p>在CSS3中新增了很多的选择器，如果大家会jQuery，jQuery中多数选择器在CSS3中都可以直接使用。</p>
+<h4 id="1-1、基础的选择器"><a href="#1-1、基础的选择器" class="headerlink" title="1.1、基础的选择器"></a>1.1、基础的选择器</h4><p><img src="http://a3.qpic.cn/psb?/V12Zwqs81gGyHH/RqS*oicY5cZRqLkvrqOBCTTZ1PTHZKyClgXBq4x6TlE!/b/dHABAAAAAAAA&amp;bo=iAPgAQAAAAADAE8!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<p>红色字体中选择器的区别是：p.info的意思是p元素中必须有class=”info”属性将被选择，p .info是选择后代元素，示例：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;选择器&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        p.info{
+            color: red;
+        }
+        p .info{
+            color: blue;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;选择器&lt;/h2&gt;
+    &lt;p class=&quot;info&quot;&gt;p1&lt;/p&gt;
+    &lt;p&gt;
+            &lt;span class=&quot;info&quot;&gt;span1&lt;/span&gt;
+            &lt;p&gt;p3&lt;/p&gt;
+    &lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p> 运行结果：<br><img src="http://a3.qpic.cn/psb?/V12Zwqs81gGyHH/Z.dEeR5VoIp3ny2IFtDMs6US3bhLCqzNHrzNC5CFwMM!/b/dHwBAAAAAAAA&amp;bo=.QElAQAAAAADAPk!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<h4 id="1-2、组合选择器"><a href="#1-2、组合选择器" class="headerlink" title="1.2、组合选择器"></a>1.2、组合选择器</h4><p><img src="http://a2.qpic.cn/psb?/V12Zwqs81gGyHH/PAUbLg5gP5ZCM8roO2ccuA2rBHszatB7DxAULzjk4DI!/b/dAkBAAAAAAAA&amp;bo=eQOuAQAAAAADAPA!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<p>示例：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;组合选择器&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+         #div1 &gt; span
+         {
+             color: red;
+         }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;组合选择器&lt;/h2&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+        &lt;span&gt;span1&lt;/span&gt;
+        &lt;div id=&quot;div2&quot;&gt;
+            &lt;span&gt;span2&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span&gt;span3&lt;/span&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>运行结果：</p>
+<p><img src="http://a1.qpic.cn/psb?/V12Zwqs81gGyHH/lWe16W6Huk1z9A5NHsG0zkxlohOUkkaaU.KRdRW8Asc!/b/dHcBAAAAAAAA&amp;bo=PABDAAAAAAADB10!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;组合选择器&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+         #div1 + span
+         {
+             color: red;
+         }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;组合选择器&lt;/h2&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+        &lt;span&gt;span1&lt;/span&gt;
+        &lt;div id=&quot;div2&quot;&gt;
+            &lt;span&gt;span2&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span&gt;span3&lt;/span&gt;
+    &lt;span&gt;span4&lt;/span&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p><img src="http://a1.qpic.cn/psb?/V12Zwqs81gGyHH/8U7tw5I9Je0nx0JVcCAo7W0CWoGoTJNNxl943r7I4F0!/b/dHcBAAAAAAAA&amp;bo=bgBFAAAAAAADBwk!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<h4 id="1-3、属性选择器"><a href="#1-3、属性选择器" class="headerlink" title="1.3、属性选择器"></a>1.3、属性选择器</h4><p><img src="http://a1.qpic.cn/psb?/V12Zwqs81gGyHH/vqgOktjzD42o01GfCeiAGbgr5C6hLsvr4laMQK00JeQ!/b/dHcBAAAAAAAA&amp;bo=cwP7AQAAAAADAK8!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;属性选择器&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        div[id][class~=cls1] {
+            background: lightgreen;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;组合选择器&lt;/h2&gt;
+    &lt;span&gt;span0&lt;/span&gt;
+    &lt;div id=&quot;div1&quot; class=&quot;cls1&quot;&gt;
+        div1
+    &lt;/div&gt;
+    &lt;div id=&quot;div2&quot; class=&quot;cls1 cls2&quot;&gt;
+        div2
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p> 运行结果：</p>
+<p><img src="http://a1.qpic.cn/psb?/V12Zwqs81gGyHH/FvwPDOiYoYTWPtGnRFIrmyB.slI2oM0b5T.MhDL4.8c!/b/dHcBAAAAAAAA&amp;bo=oABfAAAAAAADANo!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<h3 id="1-4、伪类"><a href="#1-4、伪类" class="headerlink" title="1.4、伪类"></a>1.4、伪类</h3><p><img src="http://a2.qpic.cn/psb?/V12Zwqs81gGyHH/fVkIzx29UvREaixd4YZtkXJd0L*MiUh6*sgTHXnbyro!/b/dAkBAAAAAAAA&amp;bo=hwMBAgAAAAADAKI!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<p> 示例：</p>
+<pre><code> &lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;伪类&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+       td:first-child
+       {
+             background: lightcoral;
+       }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;组合选择器&lt;/h2&gt;
+    &lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+    &lt;hr /&gt;
+    &lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+&lt;/body&gt;
+</code></pre><p></p>
+<p> 运行结果：<br> <img src="http://a2.qpic.cn/psb?/V12Zwqs81gGyHH/UCCkXxOTZ8NxEb1vdu4NGmauoUhZOaIw5wBkTeYohyU!/b/dAkBAAAAAAAA&amp;bo=zgJyAQAAAAADAJo!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<p> 练习：实现隔行换色，当鼠标悬停在每一行上时高亮显示为黄色，按下时高亮红色</p>
+<pre><code>&lt;style type=&quot;text/css&quot;&gt;
+      tr:nth-child(2n+1){
+           background:lightblue;
+      }
+      tr:hover{
+          background: yellow;
+      }
+      tr:active{
+          background: orangered;
+      }
+   &lt;/style&gt;
+</code></pre><p> <img src="http://a3.qpic.cn/psb?/V12Zwqs81gGyHH/cgKWfwvDSiaaiTJFMRpRayTDVz2EGVV2LCZQqjWWtIg!/b/dHwBAAAAAAAA&amp;bo=eQORAQAAAAADAM8!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<h4 id="1-5、伪元素"><a href="#1-5、伪元素" class="headerlink" title="1.5、伪元素"></a>1.5、伪元素</h4><p><img src="http://a2.qpic.cn/psb?/V12Zwqs81gGyHH/i05*pAaMKW*nrAHdr08MmW06FUgzMbloCKsxnegH81Y!/b/dI0BAAAAAAAA&amp;bo=ZAPoAQAAAAADAKs!&amp;rf=viewer_4" alt="Smaller icon"><br>标准的伪元素应该使用::，但单:也行，只是为了兼容。</p>
+<p>示例：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;伪类&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        a::before {
+            content: &quot;网站&quot;;
+            display: inline-block;
+            background: red;
+            color: white;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;伪元素&lt;/h2&gt;
+    &lt;a href=&quot;http://www.baidu.com&quot;&gt;百度&lt;/a&gt;
+    &lt;a href=&quot;http://best.cnblogs.com&quot;&gt;博客园&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>运行结果：</p>
+<p><img src="http://a2.qpic.cn/psb?/V12Zwqs81gGyHH/2f6NEliKqB1U9ypoZrGyqMGNhcgFfYguaU5DWKp7g48!/b/dOUAAAAAAAAA&amp;bo=rABeAAAAAAADANc!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<h4 id="三、特殊性（优先级）"><a href="#三、特殊性（优先级）" class="headerlink" title="三、特殊性（优先级）"></a>三、特殊性（优先级）</h4><p>a)、同类型，同级别的样式后者先于前者</p>
+<p>b)、ID &gt; 类样式 &gt; 标签 &gt; *</p>
+<p>c)、内联&gt;ID选择器&gt;伪类&gt;属性选择器&gt;类选择器&gt;标签选择器&gt;通用选择器(*)&gt;继承的样式</p>
+<p>d)、具体 &gt; 泛化的，特殊性即css优先级</p>
+<p>e)、近的 &gt; 远的 (内嵌样式 &gt; 内部样式表 &gt; 外联样式表)</p>
+<p>内嵌样式：内嵌在元素中，</p>
+<pre><code>&lt;span style=&quot;color:red&quot;&gt;span&lt;/span&gt;
+</code></pre><p>内部样式表：在页面中的样式，写在<style></style>中的样式</p>
+<p>外联样式表：单独存在一个css文件中，通过link引入或import导入的样式<br>f)、!important 权重最高，比 inline style 还要高</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;优先级&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        * {
+            color: yellow;
+        }
+        p {
+            color: red !important;
+        }
+        .cls1 {
+            color: deeppink;
+        }
+        .cls2{
+            color: blueviolet;
+        }
+        #p1{
+            color:blue;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;
+        &lt;p id=&quot;p1&quot; class=&quot;cls2 cls1&quot; style=&quot;color:#ccc&quot;&gt;p1&lt;/p&gt;
+        &lt;span&gt;span1&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>运行结果：</p>
+<p><img src="http://a3.qpic.cn/psb?/V12Zwqs81gGyHH/fbX3ZzAaMN.ykNIil4WgGrb7qeV9MaePeG5g7EseWLI!/b/dAoBAAAAAAAA&amp;bo=QgBLAAAAAAADACw!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<h4 id="3-2、计算特殊性值"><a href="#3-2、计算特殊性值" class="headerlink" title="3.2、计算特殊性值"></a>3.2、计算特殊性值</h4><p>important &gt; 内嵌 &gt; ID &gt; 类 &gt; 标签 | 伪类 | 属性选择 &gt; 伪对象 &gt; 继承 &gt; 通配符</p>
+<p>权重、特殊性计算法：</p>
+<p>CSS样式选择器分为4个等级，a、b、c、d</p>
+<p>1.如果样式是行内样式（通过Style=“”定义），那么a=1，1,0,0,0 </p>
+<p>2.b为ID选择器的总数 0,1,0,0 </p>
+<p>3.c为属性选择器，伪类选择器和class类选择器的数量。0,0,1,0</p>
+<p>4.d为标签、伪元素选择器的数量 0,0,0,1</p>
+<p>5.!important 权重最高，比 inline style 还要高</p>
+<p> 比如结果为：1093比1100，按位比较，从左到右，只要一位高于则立即胜出，否则继续比较。</p>
+<p> <img src="http://a1.qpic.cn/psb?/V12Zwqs81gGyHH/4Tzpe1Ia5*Ax3WC*I2aEbY1sVWN7PEJfdgk2nsNTpLs!/b/dHcBAAAAAAAA&amp;bo=bwKJAQAAAAADAMA!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<p> 示例：</p>
+<pre><code> &lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;优先级&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        html body #div1
+        {
+            background: red;
+        }
+
+        .cls1 #div1{  
+            background: blue;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;cls1&quot;&gt;
+        &lt;div id=&quot;div1&quot;&gt;div1
+        &lt;/div&gt;
+        &lt;div id=&quot;div2&quot;&gt;div2
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>运行结果：<br><img src="http://a2.qpic.cn/psb?/V12Zwqs81gGyHH/El0zhz8lJhWS83FjD2asAygnWszF4pvHUOTZEisETtw!/b/dAkBAAAAAAAA&amp;bo=bQICAQAAAAADAEk!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<p>因为html body #div1的特殊性值为：0102，而.cls1 #div1的特殊性值为0110，后者胜出。</p>
+<h4 id="四、刻度"><a href="#四、刻度" class="headerlink" title="四、刻度"></a>四、刻度</h4><p>在CSS中刻度是用于设置元素尺寸的单位。</p>
+<p>特殊值0可以省略单位。例如：margin:0px可以写成margin:0</p>
+<p>一些属性可能允许有负长度值，或者有一定的范围限制。如果不支持负长度值，那应该变换<br>到能够被支持的最近的一个长度值。 </p>
+<p>长度单位包括包括：相对单位和绝对单位。 </p>
+<p>相对长度单位包括有： em, ex, ch, rem, vw, vh, vmax, vmin </p>
+<p>绝对长度单位包括有： cm, mm, q, in, pt, pc, px</p>
+<p><img src="http://a3.qpic.cn/psb?/V12Zwqs81gGyHH/I6tAhcKTVzhDPlf4AK4nvK1ryTdcXSD.QiCpgNUD70U!/b/dAoBAAAAAAAA&amp;bo=VgIPAQAAAAADAH8!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<p>4.1、绝对长度单位</p>
+<p>1in = 2.54cm = 25.4 mm = 72pt = 6pc = 96px</p>
+<p>4.2、文本相对长度单位</p>
+<p>em</p>
+<p>相对长度单位。相对于当前对象内文本的字体尺寸。如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸。(相对父元素的字体大小倍数)<br>body { font-size: 14px; }</p>
+<p>h1 { font-size: 16px; }</p>
+<p>.size1 p { font-size: 1em; }</p>
+<p>.size2 p { font-size: 2em; }</p>
+<p>.size3 p { font-size: 3em; }</p>
+<p>浏览器的默认字体大小为16像素，浏览器默认样式也称为user agent stylesheet，就是所有浏览器内置的默认样式，多数是可以被修改的，但chrome不能直接修改，可以被用户样式覆盖。</p>
+<p><img src="http://a1.qpic.cn/psb?/V12Zwqs81gGyHH/5TToaD3YaJT8NRRhz77YQYo7TSCIGNlBxcZGeI7pQ7E!/b/dOEAAAAAAAAA&amp;bo=8QG2AAAAAAADAGM!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;em与rem&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        #div2{
+            background: blue;
+            height: 5em;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+        &lt;div id=&quot;div2&quot;&gt;
+            Hello em
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>结果：</p>
+<p><img src="http://a3.qpic.cn/psb?/V12Zwqs81gGyHH/1ya.ctpXzuAmJwH192b7YTy9b7Vn0PFnoH2nnlFFwW4!/b/dAoBAAAAAAAA&amp;bo=*AOKAAAAAAADAFA!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<p>div2的高度为80px，是因为user agent stylesheet默认样式中字体大小为16px，按照这个规则我们可以手动修改字体大小，div2的高度将发生变化。</p>
+<p>示例：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;em与rem&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        #div1 {
+            font-size: 20px;
+        }
+        #div2 {
+            color: white;
+            background: blue;
+            height: 5em;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+        &lt;div id=&quot;div2&quot;&gt;
+            Hello em
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>结果：<br><img src="http://a3.qpic.cn/psb?/V12Zwqs81gGyHH/NmiAOXzoIL*yFcJoodUj8hr2c5gpB*7Ht0UmVOQGGnI!/b/dAoBAAAAAAAA&amp;bo=nQMyAgAAAAADAIs!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<p>rem</p>
+<p>rem是CSS3新增的一个相对单位（root em，根em），相对于根元素(即html元素)font-size计算值的倍数<br>只相对于根元素的大小<br>rem（font size of the root element）是指相对于根元素的字体大小的单位。简单的说它就是一个相对单位。看到rem大家一定会想起em单位，em（font size of the element）是指相对于父元素的字体大小的单位。它们之间其实很相似，只不过一个计算的规则是依赖根元素一个是依赖父元素计算。（相对是的HTML元素的字体大，默认16px）</p>
+<p>示例：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;em与rem&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        #div1 {
+            font-size: 20px;
+        }
+        #div2 {
+            color: white;
+            background: blue;
+            height: 5rem;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+        &lt;div id=&quot;div2&quot;&gt;
+            Hello em
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>运行结果：<br><img src="http://a2.qpic.cn/psb?/V12Zwqs81gGyHH/nLAFuh1pX4xki8nLQmB71z1egg0.smC61wQTRCD0zVQ!/b/dAkBAAAAAAAA&amp;bo=oQMxAgAAAAADALQ!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<p>按理说高度为5*10px=50像素高度，但这里为60，是因为chrome浏览器限制了最小字体大小为12px，从上图可以看出。</p>
+<h4 id="4-3、Web-App与Rem"><a href="#4-3、Web-App与Rem" class="headerlink" title="4.3、Web App与Rem"></a>4.3、Web App与Rem</h4><p>为了实现简单的响应式布局，可以利用html元素中字体的大小与屏幕间的比值设置font-size的值实现当屏幕分辨率变化时让元素也变化，以前的tmall就使用这种办法，示例如下：<br><img src="http://a3.qpic.cn/psb?/V12Zwqs81gGyHH/Hv0OykwYEpFIuPDsSTDGyyD96JW4Wb5it.WW17Bu.To!/b/dHwBAAAAAAAA&amp;bo=awPrAQAAAAADAKc!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<p>示例一：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;rem phone test&lt;/title&gt;
+    &lt;!--
+        描述：视口
+    --&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;
+    &lt;style&gt;
+        html {
+            height: 100%;
+            width: 100%;
+            font-family: &apos;Heiti SC&apos;, &apos;Microsoft YaHei&apos;;
+            font-size: 20px;
+            overflow: hidden;
+            outline: 0;
+            -webkit-text-size-adjust: none;
+            -moz-text-size-adjust: none;
+            -ms-text-size-adjust: none;
+        }
+        body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            -webkit-user-select: none;
+            /*取消用户选择*/
+
+            width: 100%;
+        }
+        header,
+        footer {
+            width: 100%;
+            line-height: 1.5rem;
+            font-size: 1rem;
+            color: #000;
+            border: 1px solid #ccc;
+            text-align: center;
+            background-color: #ccc;
+        }
+        .bd {
+            margin-top: 1rem;
+            margin-bottom: .5rem;
+            margin-right: -.5rem;
+            font-size: 0;
+        }
+        .bd:after {
+            clear: both;
+        }
+        .box {
+            width: 5rem;
+            height: 5rem;
+            display: inline-block;
+            margin-right: .5rem;
+            margin-bottom: .5rem;
+        }
+        .blue-box {
+            background-color: #06c;
+        }
+        .org-box {
+            background-color: #1fc195;
+        }
+    &lt;/style&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;我是头部&lt;/header&gt;
+    &lt;div class=&quot;bd&quot;&gt;
+        &lt;div class=&quot;box blue-box&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;box org-box&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;box blue-box&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;box org-box&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;box blue-box&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;box org-box&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;box blue-box&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;box org-box&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;box blue-box&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;box org-box&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;box blue-box&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;box org-box&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;box blue-box&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;box org-box&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;box blue-box&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;box org-box&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;box blue-box&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;box org-box&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;box blue-box&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;box org-box&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;box blue-box&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;box org-box&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;box blue-box&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;box org-box&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;footer&gt;我是页脚&lt;/footer&gt;
+
+    &lt;script&gt;
+       /*
+       ;(function(win){
+          win.alert(&quot;Hello IIEF&quot;);
+       })(window);
+       */
+
+         //定义一个方法并执行
+        (function(doc, win) {
+            //获得文档的根节点html
+            var docEl = doc.documentElement;
+            //如果window中存在orientationchange对象，则取orientationchange,否则取resize
+            //为了事件绑定
+            resizeEvt = &apos;orientationchange&apos; in win ? &apos;orientationchange&apos; : &apos;resize&apos;;
+            //定义一个方法，重新计算font-size大小
+            var recalc = function() {
+                //页面的宽度
+                var clientWidth = docEl.clientWidth;
+                //如果没有宽度则退出
+                if (!clientWidth) return;
+                //重新计算font-size大小，假定320的宽度时字体大小为20;，当页面变化时重新设置字体大小
+                docEl.style.fontSize = 20 * (clientWidth / 320) + &apos;px&apos;;
+            };
+            //如果浏览器不支持添加事件监听则结束
+            if (!doc.addEventListener) return;
+            //添加事件监听，指定事件处理函数的时期或阶段(boolean)true表示在捕获事件执行，false表示冒泡时执行
+            win.addEventListener(resizeEvt, recalc, false);
+            //当Dom树加载完成时执行计算，DOMContentLoaded事件要在window.onload之前执行
+            doc.addEventListener(&apos;DOMContentLoaded&apos;, recalc, false);
+        })(document, window);
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre><p>运行结果：</p>
+<p><img src="http://a2.qpic.cn/psb?/V12Zwqs81gGyHH/eeS5ePZlPLKYKPD85C9Mmo6HQLgONZCVaPoKToUVKWE!/b/dI0BAAAAAAAA&amp;bo=DgGoAQAAAAADAIM!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<p><img src="http://a1.qpic.cn/psb?/V12Zwqs81gGyHH/qWiyvNgTNBhyjtTOxrOz5M93VAVdOQyxKUL51RtRJ*8!/b/dHcBAAAAAAAA&amp;bo=jAEqAgAAAAADAIA!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<p>示例二：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;web app 与rem&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        html {
+            font-size: 20px;
+        }
+        body {
+            font-size: 16px;
+        }
+        #div2 {
+            color: white;
+            background: blue;
+            height: 3rem;
+            width: 3rem;
+            font-size: .7rem;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div id=&quot;div2&quot;&gt;
+        Hello rem
+    &lt;/div&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        function resize() {
+            var w = document.documentElement.clientWidth;
+            document.documentElement.style.fontSize = w * 20 / 290 + &quot;px&quot;;
+        }
+        window.onresize =resize;
+
+        resize();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre><p><img src="http://a2.qpic.cn/psb?/V12Zwqs81gGyHH/liox8ofGx0gQkwGAMEcN9Nq.3DlqOqAgF6MvLhxKc7A!/b/dAkBAAAAAAAA&amp;bo=IwHWAQAAAAADANA!&amp;rf=viewer_4" alt="Smaller icon"></p>
+<p><img src="http://images2015.cnblogs.com/blog/63651/201611/63651-20161124104126003-1851324104.png" alt="Smaller icon"></p>
+<p>变屏幕变宽时元素大小也随之发生变化，但这里并没有考虑高度，但为响应式布局与hack提供了思路。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/07/02/bk1/" class="archive-article-date">
+  	<time datetime="2016-07-02T07:03:56.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-07-02</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/07/06/bibao/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          js闭包的理解
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+
+<!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-bk1" data-title="CSS3与页面布局学习总结（一）——概要、选择器、特殊性与刻度单位" data-url="http://yoursite.com/2016/07/02/bk1/"></div>
+
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"wangqianqian11"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 七月
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">嗨&lt;br&gt;&lt;br&gt;欢迎来到我的小博客&lt;br&gt;嘻嘻</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
